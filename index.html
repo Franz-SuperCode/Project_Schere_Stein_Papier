@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Schere-Stein-Papier</title>
+</head>
+
+<body>
+    <form action="#">
+        <h1>How many Rounds?</h1>
+        <label for="five">5</label>
+        <input id="five" type="radio" name="rounds">
+
+        <label for="ten">10</label>
+        <input id="ten" type="radio" name="rounds">
+
+        <label for="fifteen">15</label>
+        <input id="fifteen" type="radio" name="rounds">
+
+        <label for="twenty">20</label>
+        <input id="twenty" type="radio" name="rounds">
+    </form>
+
+    <p>User Win:</p>
+    <p id="userWin">0</p>
+    <p>COMP Win:</p>
+    <p id="compWin">0</p>
+
+    <button id="stein" type="button" value="0">Stein</button>
+    <button id="papier" type="button" value="1">Papier</button>
+    <button id="schere" type="button" value="2">Schere</button>
+    <button id="reset" type="button">Restart</button>
+
+
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
