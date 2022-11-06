@@ -10,32 +10,44 @@
 </head>
 
 <body>
-    <form action="#">
-        <h1>How many Rounds?</h1>
-        <label for="five">5</label>
-        <input id="five" type="radio" name="rounds" checked>
+    <main>
+        <h1>Rock - Paper - Scissors </h1>
+        <img id="logo" src="https://cdn-icons-png.flaticon.com/512/6836/6836871.png" alt="">
+        <form action="#">
+            <h2>How many Rounds to Play?</h2>
+            <input id="five" type="radio" name="rounds" checked>
+            <label for="five">5</label>
 
-        <label for="ten">10</label>
-        <input id="ten" type="radio" name="rounds">
+            <input id="ten" type="radio" name="rounds">
+            <label for="ten">10</label>
 
-        <label for="fifteen">15</label>
-        <input id="fifteen" type="radio" name="rounds">
+            <input id="fifteen" type="radio" name="rounds">
+            <label for="fifteen">15</label>
 
-        <label for="twenty">20</label>
-        <input id="twenty" type="radio" name="rounds">
-    </form>
+            <input id="twenty" type="radio" name="rounds">
+            <label for="twenty">20</label>
+        </form>
+        <section id="wins">
+            <p>User Win</p>
+            <p id="userWin">0</p>
+            <p>:</p>
+            <p id="compWin">0</p>
+            <p>COMP Win</p>
+        </section>
 
-    <p>User Win:</p>
-    <p id="userWin">0</p>
-    <p>COMP Win:</p>
-    <p id="compWin">0</p>
-    <h2>The Final winner is:</h2>
+        <p id="textWin"></p>
+        <div id="buttons">
+            <button id="stein" type="button" value="0"><img
+                    src="https://cdn-icons-png.flaticon.com/512/7218/7218658.png" alt=""></button>
+            <button id="papier" type="button" value="1"><img
+                    src="https://cdn-icons-png.flaticon.com/512/7218/7218720.png" alt=""></button>
+            <button id="schere" type="button" value="2"><img
+                    src="https://cdn-icons-png.flaticon.com/512/7218/7218723.png" alt=""></button>
 
-    <button id="stein" type="button" value="0">Stein</button>
-    <button id="papier" type="button" value="1">Papier</button>
-    <button id="schere" type="button" value="2">Schere</button>
-    <button id="reset" type="button">Restart</button>
-
+        </div>
+        <button id="reset" type="button">Reset</button>
+        <h2 id="finalWinner">The Final winner is:</h2>
+    </main>
 
     <script src="./assets/js/main.js"></script>
 </body>
