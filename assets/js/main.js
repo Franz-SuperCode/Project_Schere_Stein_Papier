@@ -147,11 +147,11 @@ const roundsToWin = () => {
     if (fiveChecked) {
         if (amountRounds === 5) {
             if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER!!!"
+                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
             }
 
             if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP!!!"
+                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
 
             }
             document.querySelector("#buttons").style.display = "none";
@@ -162,12 +162,12 @@ const roundsToWin = () => {
     if (tenChecked) {
         if (amountRounds === 10) {
             if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER!!!"
+                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
 
             }
 
             if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP!!!"
+                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
 
             }
             document.querySelector("#buttons").style.display = "none";
@@ -178,11 +178,11 @@ const roundsToWin = () => {
     if (fifteenChecked) {
         if (amountRounds === 15) {
             if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER!!!"
+                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
             }
 
             if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP!!!"
+                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
             }
             document.querySelector("#buttons").style.display = "none";
             document.querySelector("#finalWinner").classList.add("animationWinner");
