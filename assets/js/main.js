@@ -1,3 +1,8 @@
+
+let rock = "rock";
+let paper = "paper";
+let scissors = "scissors";
+
 // Buttons geholt
 const steinButton = document.querySelector("#stein");
 const papierButton = document.querySelector("#papier");
@@ -6,7 +11,6 @@ const schereButton = document.querySelector("#schere");
 let outputUserWin = document.querySelector("#userWin");
 let outputCompWin = document.querySelector("#compWin");
 
-//Variablen für User/COMP Auswahl (Stein, Papier oder Schere)
 let compAuswahl;
 let userAuswahl;
 let amountRounds = 0;
@@ -14,62 +18,38 @@ let amountRounds = 0;
 
 steinButton.addEventListener("click", () => {
     //Beim click soll der Wert in die Variable gepeichert werden
-    userAuswahl = 0;
+    userAuswahl = rock;
     console.log('Userauswahl ist Stein');
-
     //COMP Zufall zwischen 0-2
-    compAuswahl = Math.floor(Math.random() * 3);
+    compChoose()
     console.log(compAuswahl);
 
-    // Hat der COMP nun Stein, Papier oder Schere?
-    if (compAuswahl === 0) {
-        console.log("Compauswahl ist Stein")
-    } else if (compAuswahl === 1) {
-        console.log("Compauswahl ist Papier")
-    } else {
-        console.log("Compauswahl ist Schere")
-    }
+    //Anzahl gespielte Runden erhöhen
     amountRounds++;
+
     whoWin();
     roundsToWin();
-
 })
 
 papierButton.addEventListener("click", () => {
-    userAuswahl = 1;
+    userAuswahl = paper;
     console.log('Userauswahl ist Papier');
 
-    compAuswahl = Math.floor(Math.random() * 3);
+    compChoose()
     console.log(compAuswahl);
 
-    // Hat der COMP nun Stein, Papier oder Schere?
-    if (compAuswahl === 0) {
-        console.log("Compauswahl ist Stein")
-    } else if (compAuswahl === 1) {
-        console.log("Compauswahl ist Papier")
-    } else {
-        console.log("Compauswahl ist Schere")
-    }
     amountRounds++;
     whoWin();
     roundsToWin();
 })
 
 schereButton.addEventListener("click", () => {
-    userAuswahl = 2;
+    userAuswahl = scissors;
     console.log('Userauswahl ist Schere');
 
-    compAuswahl = Math.floor(Math.random() * 3);
+    compChoose()
     console.log(compAuswahl);
 
-    // Hat der COMP nun Stein, Papier oder Schere?
-    if (compAuswahl === 0) {
-        console.log("Compauswahl ist Stein")
-    } else if (compAuswahl === 1) {
-        console.log("Compauswahl ist Papier")
-    } else {
-        console.log("Compauswahl ist Schere")
-    }
     amountRounds++;
     whoWin();
     roundsToWin();
@@ -81,64 +61,55 @@ let winCountUser = 0;
 
 //Funktion wann wer gewinnt
 const whoWin = () => {
-    if (compAuswahl === 0 && userAuswahl === 1) {
-        console.log("COMP Loose");
+    if (userAuswahl === rock && compAuswahl === scissors) {
+        console.log("User Win");
         document.querySelector("#textWin").innerHTML = "USER WIN"
         //Gewinn auf den Zählerstand packen
         winCountUser += 1;
 
 
-    } else if (compAuswahl === 0 && userAuswahl === 2) {
-        console.log("COMP Win");
-        document.querySelector("#textWin").innerHTML = "USER LOOSE"
-        wincountComp += 1;
-
-    } else if (compAuswahl === 0 && userAuswahl === 0) {
-        console.log("Unentschieden");
-        document.querySelector("#textWin").innerHTML = "DRAW"
-    }
-
-
-    if (compAuswahl === 1 && userAuswahl === 1) {
-        console.log("Unentschieden");
-        document.querySelector("#textWin").innerHTML = "DRAW"
-
-
-    } else if (compAuswahl === 1 && userAuswahl === 2) {
-        console.log("COMP Loose");
+    } else if (userAuswahl === paper && compAuswahl === rock) {
+        console.log("User Win");
         document.querySelector("#textWin").innerHTML = "USER WIN"
+        //Gewinn auf den Zählerstand packen
         winCountUser += 1;
 
+    } else if (userAuswahl === scissors && compAuswahl === paper) {
+        console.log("User Win");
+        document.querySelector("#textWin").innerHTML = "USER WIN"
+        //Gewinn auf den Zählerstand packen
+        winCountUser += 1;
 
-    } else if (compAuswahl === 1 && userAuswahl === 0) {
-        console.log("COMP Win");
-        document.querySelector("#textWin").innerHTML = "USER LOOSE";
+    }
+    else if (compAuswahl === rock && userAuswahl === scissors) {
+        console.log("Comp Win");
+        document.querySelector("#textWin").innerHTML = "COMP WIN"
+        //Gewinn auf den Zählerstand packen
         wincountComp += 1;
     }
-
-    if (compAuswahl === 2 && userAuswahl === 1) {
-        console.log("COMP Win");
-        document.querySelector("#textWin").innerHTML = "USER LOOSE"
+    else if (compAuswahl === paper && userAuswahl === rock) {
+        console.log("Comp Win");
+        document.querySelector("#textWin").innerHTML = "COMP WIN"
+        //Gewinn auf den Zählerstand packen
         wincountComp += 1;
-
-    } else if (compAuswahl === 2 && userAuswahl === 2) {
+    }
+    else if (compAuswahl === scissors && userAuswahl === paper) {
+        console.log("Comp Win");
+        document.querySelector("#textWin").innerHTML = "COMP WIN"
+        //Gewinn auf den Zählerstand packen
+        wincountComp += 1;
+    } else {
         console.log("Unentschieden");
         document.querySelector("#textWin").innerHTML = "DRAW"
-
-
-    } else if (compAuswahl === 2 && userAuswahl === 0) {
-        console.log("COMP Loose");
-        document.querySelector("#textWin").innerHTML = "USER WIN"
-        winCountUser += 1;
     }
 
+    //Anzahl der Gewinne ins HTML schreiben
     outputUserWin.innerHTML = winCountUser;
     outputCompWin.innerHTML = wincountComp;
 }
 
-
-
-const roundsToWin = () => {
+// Rundenanzahl der Radiobuttons
+function roundsToWin() {
     const fiveChecked = document.querySelector("#five").checked;
     const tenChecked = document.querySelector("#ten").checked;
     const fifteenChecked = document.querySelector("#fifteen").checked;
@@ -146,66 +117,31 @@ const roundsToWin = () => {
 
     if (fiveChecked) {
         if (amountRounds === 5) {
-            if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
-            }
-
-            if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
-
-            }
-            document.querySelector("#buttons").style.display = "none";
-            document.querySelector("#finalWinner").classList.add("animationWinner");
-            document.querySelector("#finalWinner").style.fontSize = "3rem";
+            getFinalWinner();
+            changeStyleAndAnimation();
         }
     }
     if (tenChecked) {
         if (amountRounds === 10) {
-            if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
-
-            }
-
-            if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
-
-            }
-            document.querySelector("#buttons").style.display = "none";
-            document.querySelector("#finalWinner").classList.add("animationWinner");
-            document.querySelector("#finalWinner").style.fontSize = "3rem";
+            getFinalWinner();
+            changeStyleAndAnimation();
         }
     }
     if (fifteenChecked) {
         if (amountRounds === 15) {
-            if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
-            }
-
-            if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
-            }
-            document.querySelector("#buttons").style.display = "none";
-            document.querySelector("#finalWinner").classList.add("animationWinner");
-            document.querySelector("#finalWinner").style.fontSize = "3rem";
+            getFinalWinner();
+            changeStyleAndAnimation();
         }
     }
     if (twentyChecked) {
         if (amountRounds === 20) {
-            if (winCountUser > wincountComp) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER!!!"
-            }
-
-            if (wincountComp > winCountUser) {
-                document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP!!!"
-            }
-            document.querySelector("#buttons").style.display = "none";
-            document.querySelector("#finalWinner").classList.add("animationWinner");
-            document.querySelector("#finalWinner").style.fontSize = "3rem";
+            getFinalWinner();
+            changeStyleAndAnimation();
         }
     }
 }
 
-// Bei reset
+// Bei reset alles zurücksetzen
 document.querySelector("#reset").addEventListener("click", () => {
     winCountUser = 0;
     wincountComp = 0;
@@ -218,3 +154,34 @@ document.querySelector("#reset").addEventListener("click", () => {
     document.querySelector("#finalWinner").classList.remove("animationWinner");
     document.querySelector("#finalWinner").style.fontSize = "1.5rem";
 })
+
+function changeStyleAndAnimation() {
+    document.querySelector("#buttons").style.display = "none";
+    document.querySelector("#finalWinner").classList.add("animationWinner");
+    document.querySelector("#finalWinner").style.fontSize = "3rem";
+}
+
+function compChoose() {
+    compAuswahl = Math.floor(Math.random() * 3);
+    // Hat der COMP nun Stein, Papier oder Schere?
+    if (compAuswahl === 0) {
+        compAuswahl = rock;
+        console.log("Compauswahl ist Stein")
+    } else if (compAuswahl === 1) {
+        compAuswahl = paper;
+        console.log("Compauswahl ist Papier")
+    } else {
+        compAuswahl = scissors;
+        console.log("Compauswahl ist Schere")
+    }
+}
+
+function getFinalWinner() {
+    if (winCountUser > wincountComp) {
+        document.querySelector("#finalWinner").innerHTML = "The Final winner is: USER !!!"
+    } else if (wincountComp > winCountUser) {
+        document.querySelector("#finalWinner").innerHTML = "The Final winner is: COMP !!!"
+    } else {
+        document.querySelector("#finalWinner").innerHTML = "It's a draw! Good Game !!!"
+    }
+}
